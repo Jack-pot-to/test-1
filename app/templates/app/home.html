@@ -1,6 +1,25 @@
-{% extends 'app/base.html' %}
+<!DOCTYPE html>
 {% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Health and Wellness</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
 {% block content %}
-    <h1>hello world</h1>
-<img class="mylogo" src="{% static 'images/logo.png'%}">
+    <div class="banner">
+        <div class="navbar">
+            {% include 'app/navbar.html' %}
+        </div>
+        <div class="banner-content">
+            <img src="{% static 'images/homebg.jpg' %}" alt="Background Image">
+            <h1>Welcome to Health & Wellness</h1>
+            <p>Your journey to a healthier, balanced lifestyle begins here.</p>
+            <a href="#services" class="btn">Explore Now</a>
+        </div>
+    </div>
 {% endblock content %}
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% include 'app/base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br>
+<link rel="stylesheet" href="{% static 'css/workouts_detail.css' %}">
+        <div class="post-entry">
+            <h2><a href="">{{WorkOuts.name}}</a> </h2>
+                <p>Category: {{WorkOuts.category}}</p>
+                <p>Duration: {{WorkOuts.duration}}</p>
+        </div>
+            <a href="{% url 'workouts_update' object.pk %}">+ Edit WorkOuts</a><br>
+            <a href="{% url 'workouts_delete' object.pk %}">- Delete WorkOuts</a><br>
+            <a href="/services">Back</a>
+{% endblock content %}

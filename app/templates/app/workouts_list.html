@@ -1,0 +1,15 @@
+{% include 'app/base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br>
+<link rel="stylesheet" href="{% static 'css/workouts_list.css' %}">
+<a href="{% url 'workouts_create' %}">+ Add Workout</a>
+{% for WorkOuts in WorkOut %}
+    <div class="post-entry">
+        <h2><a href="{% url 'workouts_detail' WorkOuts.pk %}">{{ WorkOuts.name }}</a></h2>
+        <p>{{ WorkOuts.category }}</p>
+    </div>
+{% empty %}
+    <p>No workouts available. <a href="{% url 'workouts_create' %}">Add a new workout</a>!</p>
+{% endfor %}
+{% endblock content %}
