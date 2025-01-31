@@ -1,15 +1,178 @@
-body {
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    box-sizing: border-box;
 }
 
-/* Shared Header Styles */
+/* Background and Text Colors */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffffff, #A8D5BA); /* White to light green gradient */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+h1, h2 {
+    font-family: 'Arial', sans-serif;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
 h1 {
     text-align: center;
-    color: #4caf50;
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    margin-bottom: 30px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+td {
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 1rem;
+}
+
+tr:nth-child(even) td {
+    background-color: #f1f1f1;
+}
+
+table tbody tr:hover {
+    background-color: #e2f1e6; /* Light green on hover */
+}
+
+/* Form and Input Styling */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    color: #333;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px; /* Rounded corners for buttons */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:disabled {
+    background-color: #777;
+}
+
+/* Messages */
+p {
+    font-size: 1rem;
+}
+
+p strong {
+    font-weight: bold;
+}
+
+.messages {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: #2ecc71;
+}
+
+.error {
+    background-color: #e74c3c;
+}
+
+/* Layout and Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    table th, table td {
+        font-size: 0.9rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    table th, table td {
+        font-size: 0.8rem;
+    }
+
+    .container {
+        width: 95%;
+    }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons.min.css' rell='stylesheet'>
+    <link rel="stylesheet" type="tex">
+</head>
+<body>
+<header>
+    {% include 'app/navbar.html' %}
+</header>
+<div class="container">
+    <div class="service-wrapper">
+        <h1>OUR SERVICES</h1>
+        <img src="{% static '/images/homebg.jpg' %}" alt="WorkOuts">
+    </div>
+</div>
+
+<div id="workouts-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('workouts')">&times;</span>
+        <p>Lets Work build your muscle</p>
+        <button class="add-button" onclick="window.location.href='{% url 'add_mealsplans' %}'">add</button>
+    </div>
+</div>
+<script src="{% static '/css/services.css' %}"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Empowering your Health Journey</title>
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>WorkOuts Form</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">back</a>
+        </div>
+        <p class="intro-text">Please fill in the details below to add new user.</p>
+        <form id="workoutsForm" action="{% url 'add_workouts' %}" method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+    <select id="name" name="name" required>
+        <option value="" disabled selected>Select workout name</option>
+        <option value="Bicep">Bicep</option>
+        <option value="Tricep">Tricep</option>
+        <option value="Chest">Chest</option>
+        <option value="Legs">Legs</option>
+        <option value="Back">Back</option>
+        <option value="Shoulders">Shoulders</option>
+    </select>
+    {% for error in form.name.errors %}
+    <small style="color: red">{{ error }}</small>
+    {% endfor %}
+
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+            <option value="" disabled selected>Select category</option>
+            <option value="Strength">Strength</option>
+            <option value="Flexibility">Flexibility</option>
+            <option value="Cardio">Cardio</option>
+            </select>
+            {% for error in form.category.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+
+            <label for="duration">Duration (minutes):</label>
+            <input
+                type="number"
+                id="duration"
+                name="duration"
+                placeholder="Enter duration in minutes"
+                min="1"
+                required>
+            {% for error in form.duration.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="calories_burned">Calories Burned:</label>
+            <input
+                type="number"
+                id="calories_burned"
+                name="calories_burned"
+                placeholder="Enter calories burned"
+                min="0"
+                required>
+            {% for error in form.calories_burned.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+
+        <input type="submit" value="Save">
+        <a href="/database">Back</a>
+
+        </form>
+    </div>
+</body>
+</html>

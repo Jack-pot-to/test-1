@@ -1,0 +1,127 @@
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background: linear-gradient(135deg, #ffffff, #A8D5BA);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Centering the Login Form */
+.login {
+    background: #000;
+    border-radius: 16px;
+    padding: 25px 35px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Form Header */
+.login h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #00ffcc; /* Soothing healthcare green */
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Labels and Inputs */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #c7e9e9;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    background: #1b4b58; /* Muted dark teal */
+    color: #fff;
+    font-size: 15px;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+input::placeholder {
+    color: #9fcfcf;
+    font-size: 14px;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    width: 100%;
+    padding: 12px 14px;
+    background: linear-gradient(45deg, #2af598, #009efd);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(45deg, #009efd, #2af598);
+    transform: scale(1.03);
+}
+
+/* Admin and User Links */
+.admin-login {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.login-link {
+    color: #00ffcc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.login-link:hover {
+    color: #34e89e;
+}
+
+/* Small Error Messages */
+small {
+    color: #ff9494;
+    font-size: 12px;
+    display: block;
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login {
+        padding: 20px 25px;
+    }
+
+    .login h1 {
+        font-size: 22px;
+    }
+
+    input[type="text"], input[type="password"] {
+        font-size: 14px;
+    }
+
+    input[type="submit"] {
+        font-size: 14px;
+    }
+
+    .login-link {
+        font-size: 12px;
+    }
+}

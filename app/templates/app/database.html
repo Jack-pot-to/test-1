@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Overview</title>
+    <link rel="stylesheet" href="{% static 'css/database.css' %}">
+
+</head>
+<body onload="ShowDashboard()">
+    <div class="container">
+        <!-- Sidebar -->
+        <button class="burger-menu" onclick="toggleSidebar()">☰</button>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <h2>Admin Dashboard</h2>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+                    <li><a href="#" onclick="showSection('user')">Users</a></li>
+                    <li><a href="#" onclick="showSection('healthgoal')">HealthGoal</a></li>
+                    <li><a href="#" onclick="showSection('workouts')">WorkOuts</a></li>
+                    <li><a href="#" onclick="showSection('mealsplans')">Mealsplans</a></li>
+                    <li><a href="#" onclick="showSection('progresstracker')">ProgressTracker</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1>Welcome to my Admin Dashboard</h1>
+            </header>
+
+            <!-- Content Sections -->
+            <section id="dashboard" class="content-section">
+                <h2>Dashboard</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-item">
+                        <h3>Users</h3>
+                        <p>{{ user_count }}</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Health Goals</h3>
+                        <p>{{ healthgoal_count }}</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Workouts</h3>
+                        <p>{{ workouts_count }}</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Meals Plans</h3>
+                        <p>{{ mealsplans_count }}</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Progress Trackers</h3>
+                        <p>{{ progresstracker_count }}</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.style.display = 'none');
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+
+            <section id="user" class="content-section">
+                <h2>Users</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'add_user' %}'">Add</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Date of Birth</th>
+                            <th>Gender</th>
+                            <th>Height</th>
+                            <th>Join Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in user %}
+                        <tr>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.password }}</td>
+                            <td>{{ user.date_of_birth }}</td>
+                            <td>{{ user.gender }}</td>
+                            <td>{{ user.height }}</td>
+                            <td>{{ user.join_date }}</td>
+                            <td>
+                                <button class="edit-button" onclick="window.location.href='{% url 'update_user' user.pk %}'">Edit</button>
+                                <button class="delete-button" onclick="window.location.href='{% url 'delete_user' user.pk %}'">Delete</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section id="healthgoal" class="content-section" style="display: none;">
+                <h2>HealthGoal</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'add_healthgoal' %}'">add</button>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Goal Type</th>
+                        <th>Target Value</th>
+                        <th>Current Value</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="healthgoalTableBody">
+                        {% for healthgoal in healthgoal %}
+                    <tr>
+                        <td>{{ healthgoal.user }}</td>
+                        <td>{{ healthgoal.goal_type }}</td>
+                        <td>{{ healthgoal.target_value }}</td>
+                        <td>{{ healthgoal.current_value }}</td>
+                        <td>{{ healthgoal.start_date }}</td>
+                        <td>{{ healthgoal.end_date }}</td>
+                        <td>{{ healthgoal.status }}</td>
+                        <td>
+                            <button class="edit-button" onclick="window.location.href='{% url 'update_healthgoal' healthgoal.pk %}'">Edit</button>
+                            <button class="delete-button" onclick="window.location.href='{% url 'delete_healthgoal' healthgoal.pk %}'">Delete</button>                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="workouts" class="content-section" style="display: none;">
+                <h2>Workouts</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'add_workouts' %}'">add</button>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Duration</th>
+                        <th>Calories Burned</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="workoutsTableBody">
+                        {% for workouts in workouts %}
+                    <tr>
+                        <td>{{ workouts.name }}</td>
+                        <td>{{ workouts.category }}</td>
+                        <td>{{ workouts.duration }}</td>
+                        <td>{{ workouts.calories_burned }}</td>
+                        <td>
+                            <button class="edit-button" onclick="window.location.href='{% url 'update_workouts' workouts.pk %}'">Edit</button>
+                            <button class="delete-button" onclick="window.location.href='{% url 'delete_workouts' workouts.pk %}'">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="mealsplans" class="content-section" style="display: none;">
+                <h2>Mealsplans</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'add_mealsplans' %}'">add</button>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Plan Name</th>
+                        <th>Calories</th>
+                        <th>Protein</th>
+                        <th>Fat</th>
+                        <th>Carbohydrates</th>
+                        <th>Duration</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="mealsplansTableBody">
+                        {% for mealsplans in mealsplans %}
+                    <tr>
+                        <td>{{ mealsplans.user }}</td>
+                        <td>{{ mealsplans.plan_name }}</td>
+                        <td>{{ mealsplans.calories }}</td>
+                        <td>{{ mealsplans.protein }}</td>
+                        <td>{{ mealsplans.fat }}</td>
+                        <td>{{ mealsplans.carbohydrates }}</td>
+                        <td>{{ mealsplans.duration }}</td>
+                        <td>
+                            <button class="edit-button" onclick="window.location.href='{% url 'update_mealsplans' mealsplans.pk %}'">Edit</button>
+                            <button class="delete-button" onclick="window.location.href='{% url 'delete_mealsplans' mealsplans.pk %}'">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="progresstracker" class="content-section" style="display: none;">
+                <h2>ProgressTracker</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'add_progresstracker' %}'">add</button>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Metric Type</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="progresstrackerTableBody">
+                        {% for progresstracker in progresstracker %}
+                    <tr>
+                        <td>{{ progresstracker.user }}</td>
+                        <td>{{ progresstracker.metric_type }}</td>
+                        <td>{{ progresstracker.date }}</td>
+                        <td>
+                            <button class="edit-button" onclick="window.location.href='{% url 'update_progresstracker' progresstracker.pk %}'">Edit</button>
+                            <button class="delete-button" onclick="window.location.href='{% url 'delete_progresstracker' progresstracker.pk %}'">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+    </div>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.style.display = 'none');
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

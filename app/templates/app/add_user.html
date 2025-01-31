@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Empowering your Health Journey</title>
+</head>
+<link rel="stylesheet" href="{% static 'css/workouts_update.css' %}">
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>User Form</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">back</a>
+        </div>
+        <p class="intro-text">Please fill in the details below to add new user.</p>
+        <form id="userForm" action="{% url 'add_user' %}" method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            {% for error in form.name.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            {% for error in form.email.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter a secure password" minlength="8" required>
+            {% for error in form.password.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="date_of_birth">Date of Birth:</label>
+            <input type="date" id="date_of_birth" name="date_of_birth" required>
+            {% for error in form.date_of_birth.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select your gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Non-binary">Non-binary</option>
+                <option value="Other">Other</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+            {% for error in form.gender.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="height">Height:</label>
+            <input type="number" id="height" name="height" placeholder="Enter your height in cm" min="0" required>
+            {% for error in form.height.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+        <input type="submit" value="Save">
+        <a href="/database">Back</a>
+
+        </form>
+    </div>
+</body>
+</html>

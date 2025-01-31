@@ -1,0 +1,117 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background: linear-gradient(135deg, #ffffff, #A8D5BA);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Login Container */
+.login {
+    background: #000;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Form Header */
+.login h1 {
+    font-size: 26px;
+    margin-bottom: 30px;
+    color: #4cd4b0;
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Labels and Inputs */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #e0e0e0;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #1b4b58; /* Muted dark teal */
+    color: #fff;
+    font-size: 16px;
+    box-shadow: inset 0px 3px 6px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: #7f8c8d;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0px 0px 6px #4cd4b0;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    width: 80%;
+    padding: 14px;
+    background: linear-gradient(45deg, #43cea2, #185a9d);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(45deg, #185a9d, #43cea2);
+    transform: scale(1.05);
+}
+
+/* Links */
+.register-link {
+    color: #4cd4b0;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin-top: 20px;
+    transition: color 0.3s ease;
+}
+
+.register-link:hover {
+    color: #7f5a83;
+    text-decoration: underline;
+}
+
+/* Error Messages */
+small {
+    color: #ff8c8c;
+    font-size: 12px;
+    display: block;
+    margin-top: -8px;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login {
+        padding: 20px;
+    }
+}

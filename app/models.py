@@ -1,9 +1,16 @@
 from django.db import models
 from django.urls import reverse
 
+class Admin(models.Model):
+    firstname = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
+    username = models.CharField(max_length=100, unique=True)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=100)
 
 class Users(models.Model):
     name = models.CharField(max_length=30)
+    username = models.CharField(max_length=100, unique=True)
     email = models.EmailField(max_length=50, unique=True)
     password = models.CharField(max_length=128)
     date_of_birth = models.DateField()
@@ -13,19 +20,6 @@ class Users(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class HealthGoal(models.Model):
-    user = models.ForeignKey(Users, on_delete=models.CASCADE, related_name="health_goals")
-    goal_type = models.CharField(max_length=30)
-    target_value = models.DecimalField(max_digits=10, decimal_places=2, help_text="Target value for the goal")
-    current_value = models.DecimalField(max_digits=10, decimal_places=2, help_text="Current value towards the goal")
-    start_date = models.DateField()
-    end_date = models.DateField()
-    status = models.CharField(max_length=20, choices=[('in_progress', 'In Progress'), ('completed', 'Completed')])
-
-    def __str__(self):
-        return f"{self.goal_type} for {self.user.name}"
 
 
 class WorkOuts(models.Model):
@@ -39,6 +33,20 @@ class WorkOuts(models.Model):
 
     def get_absolute_url(self):
         return reverse("workouts_detail", kwargs={"pk": self.pk})
+
+
+class HealthGoal(models.Model):
+    user = models.ForeignKey(Users, on_delete=models.CASCADE, related_name="health_goals")
+    goal_type = models.ForeignKey(WorkOuts, on_delete=models.CASCADE)
+    target_value = models.DecimalField(max_digits=10, decimal_places=2, help_text="Target value for the goal")
+    current_value = models.DecimalField(max_digits=10, decimal_places=2, help_text="Current value towards the goal")
+    start_date = models.DateField()
+    end_date = models.DateField()
+    status = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f"{self.goal_type} for {self.user.name}"
+
 
 class MealsPlans(models.Model):
     user = models.ForeignKey(Users, on_delete=models.CASCADE, related_name="meal_plans")

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Empowering your Health Journey</title>
+    <link rel="stylesheet" href="{% static '/css/mealsplans.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>MealPlans Form</h1>
+        </div>
+        <p class="intro-text">Please fill in the details below to add new user.</p>
+        <form id="mealsplansForm" action="{% url 'add_mealsplans' %}" method="post">
+            {% csrf_token %}
+            <label for="user">User:</label>
+            {{ form.user }}
+            {% for error in form.user.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="plan_name">Plan Name:</label>
+            <input
+                type="text"
+                id="plan_name"
+                name="plan_name"
+                placeholder="Enter the plan name"
+                required>
+            {% for error in form.plan_name.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="calories">Calories (kcal):</label>
+            <input
+                type="number"
+                id="calories"
+                name="calories"
+                placeholder="Enter total calories (e.g., 2000)"
+                min="0"
+                required>
+            {% for error in form.calories.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="protein">Protein (grams):</label>
+            <input
+                type="number"
+                id="protein"
+                name="protein"
+                placeholder="Enter protein in grams"
+                min="0"
+                required>
+            {% for error in form.protein.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="fat">Fat (grams):</label>
+            <input
+                type="number"
+                id="fat"
+                name="fat"
+                placeholder="Enter fat in grams"
+                min="0"
+                required>
+            {% for error in form.fat.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="carbohydrates">Carbohydrates (grams):</label>
+            <input
+                type="number"
+                id="carbohydrates"
+                name="carbohydrates"
+                placeholder="Enter carbohydrates in grams"
+                min="0"
+                required>
+            {% for error in form.carbohydrates.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="duration">Duration (days):</label>
+            <input
+                type="number"
+                id="duration"
+                name="duration"
+                placeholder="Enter the duration in days"
+                min="1"
+                required>
+            {% for error in form.duration.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+        <input type="submit" value="Save">
+            <a href="{% url 'add_healthgoal' %}" class="back-button" onclick="return confirmBack();">back</a>
+        </form>
+    </div>
+</body>
+</html>

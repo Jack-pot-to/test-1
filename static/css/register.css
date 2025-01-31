@@ -1,0 +1,136 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background: linear-gradient(135deg, #ffffff, #A8D5BA);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Login Container */
+.login {
+    background: #000;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Form Header */
+.login h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #4cd4b0;
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Two-Column Layout */
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 20px;
+    margin: 20px;
+}
+
+/* Left Column */
+.form-left {
+    text-align: left;
+}
+
+/* Right Column */
+.form-right {
+    text-align: left;
+}
+
+/* Labels and Inputs */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #b4e6e6;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #1b4b58;
+    color: #fff;
+    font-size: 14px;
+    box-shadow: inset 0px 3px 6px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: #a6c6c6;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0px 0px 6px #4cd4b0;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(45deg, #43cea2, #185a9d);
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(45deg, #185a9d, #43cea2);
+    transform: scale(1.01);
+}
+
+/* Links */
+.register-link {
+    color: #4cd4b0;
+    text-decoration: none;
+    font-size: 12px;
+    display: block;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.register-link:hover {
+    color: #7f5a83;
+}
+
+/* Error Messages */
+small {
+    color: #ff8c8c;
+    font-size: 11px;
+    display: block;
+    margin-top: -8px;
+    margin-bottom: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+}

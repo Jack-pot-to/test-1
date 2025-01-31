@@ -1,15 +1,30 @@
-{% include 'app/base.html' %}
+<!DOCTYPE html>
 {% load static %}
-{% block content %}
-<br><br><br><br><br>
-<link rel="stylesheet" href="{% static 'css/workouts_list.css' %}">
-<a href="{% url 'workouts_create' %}">+ Add Workout</a>
-{% for WorkOuts in WorkOut %}
-    <div class="post-entry">
-        <h2><a href="{% url 'workouts_detail' WorkOuts.pk %}">{{ WorkOuts.name }}</a></h2>
-        <p>{{ WorkOuts.category }}</p>
+{% include 'app/navbar.html' %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/workouts_list.css' %}">
+    <title>Services</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="service-wrapper">
+        <h1>Click the below to FillUp your healthGoal</h1>
+        <a href="{% url 'add_healthgoal' %}">
+            <img src="{% static '/images/homebg.jpg' %}" alt="WorkOuts" />
+        </a>
     </div>
-{% empty %}
-    <p>No workouts available. <a href="{% url 'workouts_create' %}">Add a new workout</a>!</p>
-{% endfor %}
-{% endblock content %}
+</div>
+
+<div id="workouts-modal" class="modal">
+    <div class="modal-content">
+        <p>Let's Work and Build Your Muscle</p>
+        <button class="add-button" onclick="window.location.href='{% url 'add_healthgoal' %}'">Add</button>
+    </div>
+</div>
+</body>
+</html>

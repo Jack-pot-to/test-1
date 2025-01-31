@@ -1,0 +1,130 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Body and Form Container Styling */
+body {
+  background: linear-gradient(135deg, #ffffff, #A8D5BA);
+  color: #333;
+  font-size: 15px;
+  padding: 20px;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  color: #4CAF50;
+}
+
+.intro-text {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Back Button Styling */
+.back-button {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 7px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 10px;
+  text-align: center; /* Make sure the link is centered */
+  width: 100%; /* Full width */
+}
+
+.back-button:hover {
+  background-color: #45a049;
+}
+
+/* Form Elements */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin: 8px 0 4px;
+}
+
+input, select {
+  padding: 8px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+input[type="number"], input[type="date"], select {
+  width: 100%;
+}
+
+small {
+  color: red;
+  margin-top: 4px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+  }
+
+  .intro-text {
+    font-size: 0.9rem;
+  }
+
+  label, input, select {
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 0.95rem;
+  }
+
+  /* Center the back button on mobile */
+  .back-button {
+    width: 100%;
+    text-align: center;
+  }
+}

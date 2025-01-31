@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Empowering your Health Journey</title>
+    <link rel="stylesheet" href="{% static '/css/healthgoal.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>HealthGoal Form</h1>
+        </div>
+        <p class="intro-text">Please fill in the details below to add new user.</p>
+        <form id="healthgoalForm" action="{% url 'add_healthgoal' %}" method="post">
+            {% csrf_token %}
+            <label for="user">User:</label>
+            {{ form.user }}
+            {% for error in form.user.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="goal_type">Goal Type:</label>
+            {{ form.goal_type }}
+            {% for error in form.goal_type.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="target_value">Target Value:</label>
+            <input
+                type="number"
+                id="target_value"
+                name="target_value"
+                placeholder="Enter the target value"
+                min="0"
+                required>
+            {% for error in form.target_value.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="current_value">Current Value:</label>
+            <input
+                type="number"
+                id="current_value"
+                name="current_value"
+                placeholder="Enter the current value"
+                min="0"
+                required>
+            {% for error in form.current_value.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="start_date">Start Date:</label>
+            <input
+                type="date"
+                id="start_date"
+                name="start_date"
+                required>
+            {% for error in form.start_date.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="end_date">End Date:</label>
+            <input
+                type="date"
+                id="end_date"
+                name="end_date"
+                required>
+            {% for error in form.end_date.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                <option value="">Select status</option>
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="Failed">Failed</option>
+            </select>
+            {% for error in form.status.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <button class="next-button" onclick="window.location.href='{% url 'add_mealsplans' %}'">Next</button>
+            <a href="{% url 'services' %}" class="back-button" onclick="return confirmBack();">back</a>
+        </form>
+    </div>
+</body>
+</html>

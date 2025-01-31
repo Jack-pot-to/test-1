@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Empowering your Health Journey</title>
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>Progress Tracker Form</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">back</a>
+        </div>
+        <p class="intro-text">Please fill in the details below to add new user.</p>
+        <form id="progresstrackerForm" action="{% url 'add_progresstracker' %}" method="post">
+            {% csrf_token %}
+            <label for="user">User:</label>
+            {{ form.user }}
+            {% for error in form.user.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="metric_type">Metric Type:</label>
+            <select id="metric_type" name="metric_type" required>
+                <option value="">Select a metric type</option>
+                <option value="Weight">Weight</option>
+                <option value="Reps">Reps</option>
+                <option value="Distance">Distance</option>
+                <option value="Time">Time</option>
+                <option value="Heart Rate">Heart Rate</option>
+            </select>
+            {% for error in form.metric_type.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+
+        <input type="submit" value="Save">
+        <a href="/database">Back</a>
+
+        </form>
+    </div>
+</body>
+</html>

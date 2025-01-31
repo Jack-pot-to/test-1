@@ -1,0 +1,35 @@
+{% load static %}
+<head>
+    <title>
+        Update Progress Tracker
+    </title>
+    <link rel="stylesheet" href="{% static '/css/update.css' %}">
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Update Progress Tracker</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">
+                <i class="ri-close-line"></i>
+            </a>
+        </div>
+        <p class="intro-text">Please update the details below for the Progress Tracker.</p>
+        <form action="{% url 'update_progresstracker' object.pk %}" method="post">
+            {% csrf_token %}
+            <label for="user">User:</label>
+            {{ form.user }}
+            {% for error in form.user.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="metric_type">Metric Type:</label>
+            <input type="text" id="metric_type" name="metric_type">
+            {% for error in form.metric_type.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+        <input type="submit" value="Save">
+            <a href="/database">Back</a>
+        </form>
+    </div>
+{% endblock content %}

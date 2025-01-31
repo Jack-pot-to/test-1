@@ -9,15 +9,15 @@
 </head>
 <body>
 {% block content %}
-    <div class="banner">
-        <div class="navbar">
-            {% include 'app/navbar.html' %}
+{% include 'app/navbar.html' %}
+    <div class="info-section">
+        <div class="info-image">
+            <img src="{% static 'images/life.jpg' %}" alt="Health and Wellness Image">
         </div>
-        <div class="banner-content">
-            <img src="{% static 'images/homebg.jpg' %}" alt="Background Image">
+        <div class="info-text">
             <h1>Welcome to Health & Wellness</h1>
             <p>Your journey to a healthier, balanced lifestyle begins here.</p>
-            <a href="#services" class="btn">Explore Now</a>
+            <a href="/services" class="btn">Explore Now</a>
         </div>
     </div>
 {% endblock content %}

@@ -1,0 +1,87 @@
+{% load static %}
+<head>
+    <title>
+        Update Meal Plans
+    </title>
+    <link rel="stylesheet" href="{% static '/css/update.css' %}">
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Update Meal Plans</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">
+                <i class="ri-close-line"></i>
+            </a>
+        </div>
+        <p class="intro-text">Please update the details below for the Meal Plans.</p>
+        <form action="{% url 'update_mealsplans' object.pk %}" method="post">
+            {% csrf_token %}
+            <!-- User Field -->
+            <div class="form-group">
+                <label for="user">User:</label>
+                {{ form.user }}
+                {% for error in form.user.errors %}
+                <small style="color: red">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <!-- Plan Name Field -->
+            <div class="form-group">
+                <label for="plan_name">Plan Name:</label>
+                <input type="text" id="plan_name" name="plan_name" value="{{ mealsplans.plan_name }}">
+                {% for error in form.plan_name.errors %}
+                <small style="color: red">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <!-- Calories Field -->
+            <div class="form-group">
+                <label for="calories">Calories:</label>
+                <input type="number" id="calories" name="calories" value="{{ mealsplans.calories }}">
+                {% for error in form.calories.errors %}
+                <small style="color: red">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <!-- Protein Field -->
+            <div class="form-group">
+                <label for="protein">Protein:</label>
+                <input type="number" id="protein" name="protein" value="{{ mealsplans.protein }}">
+                {% for error in form.protein.errors %}
+                <small style="color: red">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <!-- Fat Field -->
+            <div class="form-group">
+                <label for="fat">Fat:</label>
+                <input type="number" id="fat" name="fat" value="{{ mealsplans.fat }}">
+                {% for error in form.fat.errors %}
+                <small style="color: red">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <!-- Carbohydrates Field -->
+            <div class="form-group">
+                <label for="carbohydrates">Carbohydrates:</label>
+                <input type="number" id="carbohydrates" name="carbohydrates" value="{{ mealsplans.carbohydrates }}">
+                {% for error in form.carbohydrates.errors %}
+                <small style="color: red">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <!-- Duration Field -->
+            <div class="form-group">
+                <label for="duration">Duration:</label>
+                <input type="number" id="duration" name="duration" value="{{ mealsplans.duration }}">
+                {% for error in form.duration.errors %}
+                <small style="color: red">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+
+        <input type="submit" value="Saves">
+            <a href="/database">Back</a>
+        </form>
+    </div>
+{% endblock content %}

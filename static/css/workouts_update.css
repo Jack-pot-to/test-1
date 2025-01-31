@@ -1,31 +1,121 @@
+/* General body styling */
 body {
-    background-color: #eaf6ff;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-form {
-    background: #ffffff;
-    border: 1px solid #b3d9ff;
+/* Form container styling */
+.form-container {
+    background-color: #ffffff;
+    width: 400px;
+    padding: 20px 30px;
     border-radius: 10px;
-    padding: 20px;
-    max-width: 400px;
-    margin: 20px auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-input[type="submit"], a {
-    background-color: #80c1ff;
-    color: #ffffff;
-    padding: 10px 15px;
+/* Form header styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    color: #4a4a4a;
+    margin: 0;
+}
+
+.header .back-button {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.header .back-button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Intro text styling */
+.intro-text {
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form input field styling */
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0px;
+    color: #333333;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Error message styling */
+form small {
+    font-size: 0.8rem;
+    color: red;
+}
+
+/* Submit button styling */
+form input[type="submit"] {
+    width: 100%;
+    background-color: brown;
+    color: white;
+    padding: 10px;
     border: none;
     border-radius: 5px;
-    text-decoration: none;
-    margin-right: 10px;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
-input[type="submit"]:hover, a:hover {
-    background-color: #4daaff;
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Back button within the form */
+form a {
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+form a:hover {
+    text-decoration: underline;
 }

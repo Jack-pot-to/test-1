@@ -1,0 +1,60 @@
+{% load static %}
+<head>
+    <title>
+        Update Workouts
+    </title>
+    <link rel="stylesheet" href="{% static '/css/update.css' %}">
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Update Workouts</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">
+                <i class="ri-close-line"></i>
+            </a>
+        </div>
+        <p class="intro-text">Please update the details below for the Workouts.</p>
+        <form action="{% url 'update_workouts' object.pk %}" method="post">
+            {% csrf_token %}
+            <!-- Name Field -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            {{ form.name }}
+            {% for error in form.name.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <!-- Category Field -->
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" value="{{ workouts.category }}">
+            {% for error in form.category.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <!-- Duration Field -->
+        <div class="form-group">
+            <label for="duration">Duration:</label>
+            <input type="number" id="duration" name="duration" value="{{ workouts.duration }}">
+            {% for error in form.duration.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <!-- Calories Burned Field -->
+        <div class="form-group">
+            <label for="calories_burned">Calories Burned:</label>
+            <input type="number" id="calories_burned" name="calories_burned" value="{{ workouts.calories_burned }}">
+            {% for error in form.calories_burned.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+
+        <input type="submit" value="Save">
+            <a href="/database">Back</a>
+        </form>
+    </div>
+{% endblock content %}
